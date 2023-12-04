@@ -36,7 +36,7 @@ class Movie
     public function printCard()
     {
         $image = $this->poster_path;
-        $title = $this->title;
+        $title = strlen($this->title) > 28 ? substr($this->title, 0, 28) . '...' : $this->title;
         $content = substr($this->overview, 0, 100) . '...';
         $custom = $this->getVote();
         $genre = $this->genre->name;
@@ -50,11 +50,10 @@ $movieList = json_decode($movieString, true);
 
 $movies = [];
 
-$action = new Genre('Action');
-$comedy = new Genre('Comedy');
+$rand_genre = $genres[rand(0, count($genres) - 1)];
 foreach ($movieList as $item) {
 
-    $movies[] = new Movie($item['id'], $item['title'], $item['overview'], $item['vote_average'], $item['original_language'], $item['poster_path'], $action);
+    $movies[] = new Movie($item['id'], $item['title'], $item['overview'], $item['vote_average'], $item['original_language'], $item['poster_path'], $rand_genre);
 }
 
 
