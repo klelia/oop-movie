@@ -40,7 +40,7 @@ class Movie extends Product
     {
 
         $template = "<p>";
-        for ($n = 1; $n < count($this->genres); $n++) {
+        for ($n = 0; $n < count($this->genres); $n++) {
             $template .= $this->genres[$n]->drawGenre();
         }
         $template .= "</p>";
@@ -48,7 +48,7 @@ class Movie extends Product
     }
     public function printCard()
     {
-        $sconto = $this->setDiscount($this->title);
+        $sconto = $this->getDiscount();
         $image = $this->poster_path;
         $title = strlen($this->title) > 28 ? substr($this->title, 0, 28) . '...' : $this->title;
         $content = substr($this->overview, 0, 100) . '...';
@@ -75,13 +75,16 @@ class Movie extends Product
             //creo array vuoto per i generi da passare al movie
             $moviegenres = [];
             //ciclo sull'array dei generi disponibili nei dati
-            for ($i = 0; $i < count($item['genre_ids']); $i++) {
+            while (count($moviegenres) < count($item['genre_ids'])) {
                 //per ogni genere id creo randomicamente un indice
                 $index = rand(0, count($genres) - 1);
                 //prendo dall'array dei generi quello con quell'indice
                 $rand_genre = $genres[$index];
                 //lo pusho nell'array di generi da passare al movie
-                $moviegenres[] = $rand_genre;
+                if (!in_array($rand_genre, $moviegenres)) {
+                    $moviegenres[] = $rand_genre;
+                }
+
             }
             $quantity = rand(0, 100);
             $price = rand(5, 200);

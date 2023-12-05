@@ -8,23 +8,27 @@
             <p class="card-text">
                 <?= $content ?>
             </p>
-            <div class="d-flex justify-content-between align-items-flex-start">
+            <div>
                 <?= $custom ?>
-                <div>
-
-                    <?= $genre ?>
-
-                </div>
             </div>
             <div>
-                Quantatita
-                <?= $quantity ?> $
-                <?= $price ?>
-                <?php if ($sconto > 0) { ?>
-                    <div>Sonto :
-                        <?= $sconto ?>
-                    </div>
-                <?php } ?>
+                <?= $genre ?>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-flex-start">
+                <div>Quantita
+                    <?= $quantity ?>
+                </div>
+                <div>
+                    $
+                    <?= $price ?>
+                    <?php if ($sconto > 0) { ?>
+                        <div>Sconto :
+                            <?= $sconto ?>
+                        </div>
+                    <?php } ?>
+                </div>
+
             </div>
 
         </div>

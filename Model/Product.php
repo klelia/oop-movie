@@ -2,7 +2,7 @@
 class Product
 {
     protected float $price;
-    private int $sconto = 0;
+    private int $discount = 0;
 
     protected int $quantity;
 
@@ -12,13 +12,14 @@ class Product
         $this->quantity = $quantity;
     }
 
-    public function setDiscount($title)
+    public function setDiscount($perc)
     {
-        if ($title == 'Gunfight at Rio Bravo') {
-            return $this->sconto = 20;
-        } else {
-            return $this->sconto;
-        }
+        $this->discount = $perc;
+
+    }
+    public function getDiscount()
+    {
+        return $this->discount;
     }
 }
 ?>
