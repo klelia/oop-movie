@@ -9,7 +9,8 @@ $movies = Movie::fetchAll();
         <?php foreach ($movies as $movie) {
             $movie->printCard();
 
-        } ?>
+        }
+        ?>
     </div>
 </section>
 <?php

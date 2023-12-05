@@ -3,7 +3,7 @@
 				"appid": 240,
 				"name": "Counter-Strike: Source",
 				"playtime_forever": 2845,
-				"img_icon_url": "9052fa60c496a1c03383b27687ec50f4bf0f0e10",
+				"img_icon_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/240/header.jpg",
 				"img_logo_url": "ee97d0dbf3e5d5d59e69dc20b98ed9dc8cad5283",
 				"has_community_visible_stats": true
 			},
@@ -11,7 +11,7 @@
 				"appid": 280,
 				"name": "Half-Life: Source",
 				"playtime_forever": 40,
-				"img_icon_url": "b4f572a6cc5a6a84ae84634c31414b9123d2f26b",
+				"img_icon_url": "https://cdn.cloudflare.steamstatic.com/steam/apps/280/header.jpg",
 				"img_logo_url": "a612dd944b768e55389140298dcfda2165db8ced",
 				"has_community_visible_stats": true
 			},

@@ -16,6 +16,16 @@
 
                 </div>
             </div>
+            <div>
+                Quantatita
+                <?= $quantity ?> $
+                <?= $price ?>
+                <?php if ($sconto > 0) { ?>
+                    <div>Sonto :
+                        <?= $sconto ?>
+                    </div>
+                <?php } ?>
+            </div>
 
         </div>
     </div>

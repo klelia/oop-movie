@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . '/Genre.php';
-class Movie
+include __DIR__ . '/Product.php';
+class Movie extends Product
 {
     private int $id;
     private string $title;
@@ -12,8 +13,9 @@ class Movie
     private array $genres; //array di oggetti di tipo Genre
 
 
-    function __construct($id, $title, $overview, $vote, $language, $image, $genres)
+    function __construct($id, $title, $overview, $vote, $language, $image, $genres, $quantity, $price)
     {
+        parent::__construct($price, $quantity);
 
         $this->id = $id;
         $this->title = $title;
@@ -46,11 +48,14 @@ class Movie
     }
     public function printCard()
     {
+        $sconto = $this->setDiscount($this->title);
         $image = $this->poster_path;
         $title = strlen($this->title) > 28 ? substr($this->title, 0, 28) . '...' : $this->title;
         $content = substr($this->overview, 0, 100) . '...';
         $custom = $this->getVote();
         $genre = $this->formatGenres();
+        $price = $this->price;
+        $quantity = $this->quantity;
         include __DIR__ . '/../Views/card.php';
     }
     public static function fetchAll()
@@ -78,8 +83,10 @@ class Movie
                 //lo pusho nell'array di generi da passare al movie
                 $moviegenres[] = $rand_genre;
             }
+            $quantity = rand(0, 100);
+            $price = rand(5, 200);
             //creo l'istanza del movie
-            $movies[] = new Movie($item['id'], $item['title'], $item['overview'], $item['vote_average'], $item['original_language'], $item['poster_path'], $moviegenres);
+            $movies[] = new Movie($item['id'], $item['title'], $item['overview'], $item['vote_average'], $item['original_language'], $item['poster_path'], $moviegenres, $quantity, $price);
         }
         //ritorno la lista di oggetti movie (istanze della classe Movie)
         return $movies;
