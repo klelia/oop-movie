@@ -48,6 +48,15 @@ class Movie extends Product
     }
     public function printCard()
     {
+        $error = '';
+        if (ceil($this->vote_average) < 7) {
+            try {
+                $this->setDiscount(10);
+            } catch (Exception $e) {
+                $error = 'Eccezione: ' . $e->getMessage();
+            }
+
+        }
         $sconto = $this->getDiscount();
         $image = $this->poster_path;
         $title = strlen($this->title) > 28 ? substr($this->title, 0, 28) . '...' : $this->title;

@@ -2,6 +2,12 @@
     <div class="card">
         <img src="<?= $image ?>" class="card-img-top my-ratio" alt="<?= $title ?>">
         <div class="card-body">
+            <?php
+            if ($error) { ?>
+                <div class="alert alert-danger">
+                    <?= $error ?>
+                </div>
+            <?php } ?>
             <h5 class="card-title">
                 <?= $title ?>
             </h5>
@@ -24,7 +30,7 @@
                     <?= $price ?>
                     <?php if ($sconto > 0) { ?>
                         <div>Sconto :
-                            <?= $sconto ?>
+                            <?= $sconto ?> %
                         </div>
                     <?php } ?>
                 </div>

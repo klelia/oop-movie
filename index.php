@@ -8,7 +8,6 @@ $movies = Movie::fetchAll();
     <div class="row gy-4">
         <?php foreach ($movies as $movie) {
             $movie->printCard();
-
         }
         ?>
     </div>

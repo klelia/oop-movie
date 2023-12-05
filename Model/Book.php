@@ -8,7 +8,6 @@ class Book extends Product
     private int $id;
     private string $image;
     private string $title;
-    private float $vote;
     private array $authors;
 
     private string $overview;

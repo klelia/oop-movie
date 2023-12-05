@@ -14,7 +14,12 @@ class Product
 
     public function setDiscount($perc)
     {
-        $this->discount = $perc;
+        if ($perc < 5 || $perc > 100) {
+            throw new Exception('Your perecentage is out of range.');
+        } else {
+            $this->discount = $perc;
+        }
+
 
     }
     public function getDiscount()
