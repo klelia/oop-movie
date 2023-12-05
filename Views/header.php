@@ -28,7 +28,7 @@
             <h1>OOP - Shop</h1>
             <ul>
                 <li><a href="index.php">Movies</a></li>
-                <li><a href="book.php">Book</a></li>
+                <li><a href="books.php">Book</a></li>
             </ul>
 
         </div>

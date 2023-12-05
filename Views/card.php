@@ -11,9 +11,9 @@
             <div class="d-flex justify-content-between align-items-flex-start">
                 <?= $custom ?>
                 <div>
-                    <small>
-                        <?= $genre ?>
-                    </small>
+
+                    <?= $genre ?>
+
                 </div>
             </div>
 
