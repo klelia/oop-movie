@@ -1,8 +1,10 @@
 <?php
 include __DIR__ . '/Genre.php';
 include __DIR__ . '/Product.php';
+
 class Movie extends Product
 {
+
     private int $id;
     private string $title;
     private string $overview;
@@ -46,26 +48,29 @@ class Movie extends Product
         $template .= "</p>";
         return $template;
     }
-    public function printCard()
+    public function formatCard()
     {
-        $error = '';
-        if (ceil($this->vote_average) < 7) {
-            try {
-                $this->setDiscount(10);
-            } catch (Exception $e) {
-                $error = 'Eccezione: ' . $e->getMessage();
-            }
+        // $error = '';
+        // if (ceil($this->vote_average) < 7) {
+        //     try {
+        //         $this->setDiscount(10);
+        //     } catch (Exception $e) {
+        //         $error = 'Eccezione: ' . $e->getMessage();
+        //     }
 
-        }
-        $sconto = $this->getDiscount();
-        $image = $this->poster_path;
-        $title = strlen($this->title) > 28 ? substr($this->title, 0, 28) . '...' : $this->title;
-        $content = substr($this->overview, 0, 100) . '...';
-        $custom = $this->getVote();
-        $genre = $this->formatGenres();
-        $price = $this->price;
-        $quantity = $this->quantity;
-        include __DIR__ . '/../Views/card.php';
+        // }
+        $cardItem = [
+            'sconto' => $this->getDiscount(),
+            'image' => $this->poster_path,
+            'title' => strlen($this->title) > 28 ? substr($this->title, 0, 28) . '...' : $this->title,
+            'content' => substr($this->overview, 0, 100) . '...',
+            'custom' => $this->getVote(),
+            'genre' => $this->formatGenres(),
+            'price' => $this->price,
+            'quantity' => $this->quantity
+        ];
+        return $cardItem;
+
     }
     public static function fetchAll()
     {

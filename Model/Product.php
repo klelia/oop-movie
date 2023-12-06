@@ -1,6 +1,8 @@
 <?php
+include __DIR__ . '/../Traits/DrawCard.php';
 class Product
 {
+    use DrawCard;
     protected float $price;
     private int $discount = 0;
 
@@ -26,5 +28,6 @@ class Product
     {
         return $this->discount;
     }
+
 }
 ?>

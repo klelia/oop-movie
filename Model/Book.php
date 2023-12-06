@@ -2,8 +2,10 @@
 
 include __DIR__ . "/Genre.php";
 include __DIR__ . "/Product.php";
+
 class Book extends Product
 {
+
 
     private int $id;
     private string $image;
@@ -64,17 +66,20 @@ class Book extends Product
         $template .= "</p>";
         return $template;
     }
-    public function printCard()
+    public function formatCard()
     {
-        $sconto = $this->getDiscount();
-        $image = $this->image;
-        $title = strlen($this->title) > 28 ? substr($this->title, 0, 28) . '...' : $this->title;
-        $content = substr($this->overview, 0, 100) . '...';
-        $custom = $this->getAuthors();
-        $genre = $this->formatGenres();
-        $price = $this->price;
-        $quantity = $this->quantity;
-        include __DIR__ . '/../Views/card.php';
+        $itemCard = [
+            'sconto' => $this->getDiscount(),
+            'image' => $this->image,
+            'title' => strlen($this->title) > 28 ? substr($this->title, 0, 28) . '...' : $this->title,
+            'content' => substr($this->overview, 0, 100) . '...',
+            'custom' => $this->getAuthors(),
+            'genre' => $this->formatGenres(),
+            'price' => $this->price,
+            'quantity' => $this->quantity
+        ];
+        return $itemCard;
+
     }
     public static function fetchAll()
     {
